@@ -18,7 +18,7 @@
 ## 🙌 Credits
 
 Thanks to the following people for their contributions:
-[![Contributors](https://contrib.rocks/image?repo=Neo-Athelios/CodeClash2.0)]()
+<img src="https://contrib.rocks/image?repo=Neo-Athelios/CodeClash2.0" />
 ## 🎥 Video Overview
 
 ## 🌐  Related Links
