@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NutriTrack - Indian Nutrition Tracker</title>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Animate.css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+      /* ========== GLOBAL STYLES ========== */
+      :root {
+        --primary: #4caf50;
+        --primary-dark: #388e3c;
+        --secondary: #ff9800;
+        --light: #f8f9fa;
+        --dark: #212529;
+        --gray: #6c757d;
+        --light-gray: #e9ecef;
+        --white: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: var(--light);
+        color: var(--dark);
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 0;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        border-radius: 50px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      /* ========== HEADER & NAVIGATION ========== */
+      header {
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-dark)
+        );
+        color: white;
+        padding: 1rem 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+      }
+
+      .logo i {
+        margin-right: 10px;
+        font-size: 1.8rem;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 25px;
+      }
+
+      .nav-links a {
+        color: white;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        padding-bottom: 5px;
+        border-bottom: 2px solid transparent;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        border-bottom-color: var(--white);
+      }
+
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* ========== HERO SECTION ========== */
+      .hero {
+        background: url("https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80")
+          no-repeat center center/cover;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        color: white;
+        text-align: center;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+      }
+
+      .pulse {
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+        }
+      }
+
+      /* ========== HEALTHY QUOTES SECTION ========== */
+      .quote-section {
+        padding: 4rem 0;
+        background-color: #f0fdf4;
+        text-align: center;
+      }
+
+      .quote-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .quote-text {
+        font-size: 1.5rem;
+        font-style: italic;
+        color: var(--primary-dark);
+        font-family: "Playfair Display", serif;
+      }
+
+      /* ========== SEARCH SECTION ========== */
+      .search-section {
+        padding: 5rem 0;
+        text-align: center;
+        background-color: var(--white);
+      }
+
+      .search-container {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .main-search-bar {
+        width: 100%;
+        padding: 20px 25px;
+        font-size: 1.2rem;
+        border-radius: 50px;
+        border: 2px solid var(--light-gray);
+        outline: none;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .main-search-bar:focus {
+        border-color: var(--primary);
+        box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2);
+      }
+
+      /* NEW: Search results container */
+      #search-results-container {
+        max-width: 600px;
+        margin: 1rem auto 0;
+        text-align: left;
+        background: var(--white);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .search-result-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        border-bottom: 1px solid var(--light-gray);
+        transition: background-color 0.3s ease;
+      }
+      .search-result-item:last-child {
+        border-bottom: none;
+      }
+      .search-result-item:hover {
+        background-color: #f0fdf4;
+      }
+      .food-name {
+        font-weight: 600;
+        color: var(--dark);
+      }
+      .food-calories {
+        font-size: 0.9rem;
+        color: var(--gray);
+      }
+      .no-results {
+        padding: 20px;
+        color: var(--gray);
+        text-align: center;
+      }
+
+      /* ========== RESPONSIVE DESIGN ========== */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background-color: var(--primary-dark);
+          flex-direction: column;
+          padding: 10px 0;
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+        .nav-links li {
+          margin: 10px 0;
+          text-align: center;
+        }
+        .mobile-menu-btn {
+          display: block;
+        }
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========== HEADER SECTION ========== -->
+    <header id="mainHeader">
+      <div class="container">
+        <nav class="navbar">
+          <a href="#" class="logo">
+            <i class="fas fa-seedling"></i>
+            <span>NutriTrack</span>
+          </a>
+          <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+          </button>
+          <ul class="nav-links" id="navLinks">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Recipes</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Login</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero" id="heroSection">
+      <div class="hero-content animate__animated animate__fadeIn">
+        <h1>Eat Healthy, Live Strong</h1>
+        <p>
+          Your journey to a healthier lifestyle starts here. Track your
+          nutrition, discover healthy recipes, and achieve your wellness goals.
+        </p>
+        <a href="#search" class="btn btn-primary pulse">Get Started</a>
+      </div>
+    </section>
+
+    <!-- ========== HEALTHY QUOTES SECTION ========== -->
+    <section class="quote-section">
+      <div class="quote-container">
+        <p id="quoteText" class="quote-text"></p>
+      </div>
+    </section>
+
+    <!-- ========== SEARCH SECTION ========== -->
+    <section class="search-section" id="search">
+      <div class="container">
+        <h2 style="font-size: 2.5rem; margin-bottom: 2rem">Find Your Food</h2>
+        <div class="search-container">
+          <input
+            type="text"
+            id="mainSearch"
+            class="main-search-bar"
+            placeholder="Search for food (e.g., Roti, Dal)..."
+          />
+          <!-- NEW: Container for search results -->
+          <div id="search-results-container"></div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // --- MOBILE MENU ---
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const navLinks = document.getElementById("navLinks");
+        mobileMenuBtn.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+        });
+
+        // --- HEALTHY QUOTES ROTATOR ---
+        const quotes = [
+          '"To eat is a necessity, but to eat intelligently is an art."',
+          "Fact: A rainbow on your plate means a variety of nutrients.",
+          '"Your body is a temple, but only if you treat it as one."',
+          "Fact: Staying hydrated can improve energy levels and brain function.",
+          '"Let food be thy medicine and medicine be thy food."',
+          "Fact: Healthy fats from avocados and nuts are vital for your health.",
+          '"A healthy outside starts from the inside."',
+        ];
+        let quoteIndex = 0;
+        const quoteTextElement = document.getElementById("quoteText");
+        function changeQuote() {
+          quoteTextElement.classList.add(
+            "animate__animated",
+            "animate__fadeOut"
+          );
+          setTimeout(() => {
+            quoteIndex = (quoteIndex + 1) % quotes.length;
+            quoteTextElement.textContent = quotes[quoteIndex];
+            quoteTextElement.classList.remove("animate__fadeOut");
+            quoteTextElement.classList.add(
+              "animate__animated",
+              "animate__fadeIn"
+            );
+          }, 500);
+        }
+        if (quoteTextElement) {
+          quoteTextElement.textContent = quotes[quoteIndex];
+          quoteTextElement.classList.add(
+            "animate__animated",
+            "animate__fadeIn"
+          );
+          setInterval(changeQuote, 5000);
+        }
+
+        // --- LIVE SEARCH FUNCTIONALITY ---
+        const searchInput = document.getElementById("mainSearch");
+        const resultsContainer = document.getElementById(
+          "search-results-container"
+        );
+        let foodDatabase = []; // This will hold all our food data
+
+        // 1. Fetch the food data from the JSON file
+        async function loadFoodData() {
+          try {
+            const response = await fetch("foods.json");
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            foodDatabase = await response.json();
+            console.log("Food database loaded successfully!");
+          } catch (error) {
+            console.error("Could not load food database:", error);
+            resultsContainer.innerHTML = `<div class="no-results">Could not load food data.</div>`;
+          }
+        }
+
+        // 2. Display results based on search query
+        function displayResults(query) {
+          resultsContainer.innerHTML = ""; // Clear previous results
+          // Remove existing detailed info table if any
+          const existingDetailTable = document.getElementById(
+            "detailed-info-table"
+          );
+          if (existingDetailTable) {
+            existingDetailTable.remove();
+          }
+
+          if (!query) {
+            return; // Don't show anything if search is empty
+          }
+
+          const lowerCaseQuery = query.toLowerCase();
+          const filteredFoods = foodDatabase.filter(
+            (food) => food["Dish Name"].toLowerCase() === lowerCaseQuery
+          );
+
+          if (filteredFoods.length === 0) {
+            resultsContainer.innerHTML = `<div class="no-results">No results found for "${query}"</div>`;
+            return;
+          }
+
+          // Show detailed info table for the exact match
+          showDetailedInfo(filteredFoods[0]);
+        }
+
+        // Function to create and show detailed info table
+        function showDetailedInfo(food) {
+          // Remove existing detailed info table if any
+          const existingTable = document.getElementById("detailed-info-table");
+          if (existingTable) {
+            existingTable.remove();
+          }
+
+          const table = document.createElement("table");
+          table.id = "detailed-info-table";
+          table.style.width = "100%";
+          table.style.borderCollapse = "collapse";
+          table.style.marginTop = "1rem";
+          table.style.backgroundColor = "var(--white)";
+          table.style.boxShadow = "0 5px 15px rgba(0, 0, 0, 0.1)";
+          table.style.borderRadius = "8px";
+          table.style.overflow = "hidden";
+
+          // Table header
+          const thead = document.createElement("thead");
+          const headerRow = document.createElement("tr");
+          const th1 = document.createElement("th");
+          th1.textContent = "Nutrient";
+          th1.style.borderBottom = "2px solid var(--light-gray)";
+          th1.style.padding = "10px";
+          th1.style.textAlign = "left";
+          const th2 = document.createElement("th");
+          th2.textContent = "Value";
+          th2.style.borderBottom = "2px solid var(--light-gray)";
+          th2.style.padding = "10px";
+          th2.style.textAlign = "left";
+          headerRow.appendChild(th1);
+          headerRow.appendChild(th2);
+          thead.appendChild(headerRow);
+          table.appendChild(thead);
+
+          // Table body
+          const tbody = document.createElement("tbody");
+
+          for (const key in food) {
+            if (food.hasOwnProperty(key)) {
+              const row = document.createElement("tr");
+              const tdKey = document.createElement("td");
+              tdKey.textContent = key;
+              tdKey.style.borderBottom = "1px solid var(--light-gray)";
+              tdKey.style.padding = "8px";
+              const tdValue = document.createElement("td");
+              tdValue.textContent = food[key];
+              tdValue.style.borderBottom = "1px solid var(--light-gray)";
+              tdValue.style.padding = "8px";
+              row.appendChild(tdKey);
+              row.appendChild(tdValue);
+              tbody.appendChild(row);
+            }
+          }
+
+          table.appendChild(tbody);
+
+          // Insert the table below the search results container
+          resultsContainer.parentNode.appendChild(table);
+        }
+
+        // 3. Add event listener to the search input
+        if (searchInput) {
+          searchInput.addEventListener("input", (e) => {
+            displayResults(e.target.value);
+          });
+        }
+
+        // Load the data when the script runs
+        loadFoodData();
+      });
+    </script>
+  </body>
+</html>
