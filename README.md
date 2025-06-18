@@ -16,12 +16,7 @@
 ## 🛠️ Tech Stack (Expected for Projects Using this Data)
 
 ## 🙌 Credits
-
 Thanks to the following people for their contributions:
-
-<a href="https://github.com/Neo-Athelios/CodeClash2.0/graphs/contributors">
-  <img src="https://contrib.rocks/image?Neo-Athelios/CodeClash2.0" />
-</a>
 
 ## 🎥 Video Overview
 
