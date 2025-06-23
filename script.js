@@ -298,7 +298,17 @@
     updateFilterSummary();
 
     if (currentFilteredFoods.length === 0) {
-      resultsContainer.innerHTML = `<div class="no-results">No results found for your search and filter criteria. Try broadening your search or clearing filters. You might also explore our <a href="#allDishes" style="color:var(--primary); text-decoration:underline;">all dishes</a> below.</div>`; // Changed link to allDishes
+      resultsContainer.innerHTML = `<div class="no-results">No results found for your search and filter criteria. Try broadening your search or <a href="#" id="clear-filters-link" style="color:var(--primary); text-decoration:underline;">clearing filters</a>.</div>`;
+      // Add event listener to clear filters link
+      const clearFiltersLink = document.getElementById('clear-filters-link');
+      if (clearFiltersLink) {
+        clearFiltersLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          if (clearFiltersBtn) {
+        clearFiltersBtn.click();
+          }
+        });
+      }
       if (paginationControls) { // Added null check
           paginationControls.innerHTML = '';
       }
