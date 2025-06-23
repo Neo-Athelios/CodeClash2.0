@@ -145,7 +145,7 @@
 
       /* HERO SECTION STYLES */
       .hero {
-        background: url("https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80") no-repeat center center/cover;
+        background: url("https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80") no-repeat center center/cover; /* Hero image */
         height: 350px; /* Reduced height to optimality */
         display: flex;
         align-items: center;
@@ -415,7 +415,7 @@
           align-items: center;
           justify-content: center;
           width: 20px; /* Increased size for icon */
-          height: 20px; /* Increased size for icon */
+          height: 20px; 
           border-radius: 50%;
           margin-left: 5px;
           vertical-align: middle;
@@ -616,90 +616,7 @@
               height: 180px; /* Slightly taller for single column */
           }
       }
-      .all-dishes-list-container {
-    background: rgba(255, 255, 255, 0.15); /* Slightly transparent background */
-    backdrop-filter: blur(10px); /* Glassmorphism blur effect */
-    -webkit-backdrop-filter: blur(10px); /* For Safari support */
-    border: 1px solid rgba(255, 255, 255, 0.18); /* Subtle border */
-    border-radius: 15px; /* Rounded corners */
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); /* Soft shadow */
-    padding: 2rem;
-    margin-top: 1.5rem; /* Add some space from the heading */
-}
-
-/* Styling for the hyperlinked texts (dish names) */
-.all-dishes-list li {
-    cursor: pointer; /* Indicates it's clickable */
-    padding: 8px 0;
-    border-bottom: 1px dashed var(--light-gray); /* Subtle separator */
-    transition: color 0.3s ease, text-decoration 0.3s ease;
-}
-
-.all-dishes-list li:last-child {
-    border-bottom: none; /* No border for the last item */
-}
-
-.all-dishes-list .all-dish-name {
-    color: var(--primary-dark); /* A distinct color for the link */
-    text-decoration: none; /* Start with no underline */
-    font-weight: 500;
-}
-
-.all-dishes-list .all-dish-name {
-    color: var(--secondary); /* Change color on hover */
-    text-decoration: underline; /* Add underline on hover */
-}
-/* Example for subtle glass effect on list items on hover */
-.all-dishes-list li:hover {
-    background: rgba(255, 255, 255, 0.05); /* Very subtle transparency */
-    backdrop-filter: blur(2px); /* Very slight blur for the item itself */
-    -webkit-backdrop-filter: blur(2px);
-    border-radius: 8px; /* Match container or smaller */
-    transform: translateY(-2px); /* Slight lift */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Soft shadow */
-}
-/* All Dishes Local Search */
-.all-dishes-search-wrapper {
-    position: relative;
-    margin-bottom: 2rem;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.all-dishes-search-wrapper input {
-    width: 100%;
-    padding: 12px 15px 12px 45px; /* Adjust padding for icon */
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    font-size: 1rem;
-    color: var(--dark);
-    outline: none;
-    /* Basic glassmorphism for input */
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-}
-
-.all-dishes-search-wrapper input::placeholder {
-    color: var(--gray);
-}
-
-.all-dishes-search-wrapper input:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
-}
-
-.all-dishes-search-wrapper .search-icon {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--gray);
-}
-
+      
 /* Alphabet Jump Links */
 .alphabet-jump-links {
     display: flex;
@@ -729,69 +646,7 @@
     color: var(--primary);
 }
 
-/* Grouped List Headers */
-.all-dishes-group-header {
-    background: rgba(255, 255, 255, 0.2); /* Slightly darker glass for headers */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    padding: 10px 20px;
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
-    font-size: 1.8rem;
-    color: var(--primary-dark);
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.all-dishes-group-header:hover {
-    background: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.all-dishes-group-header i {
-    transition: transform 0.3s ease;
-}
-
-.all-dishes-group-header.collapsed i {
-    transform: rotate(-90deg); /* Rotate icon when collapsed */
-}
-
-.all-dishes-group-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    max-height: 500px; /* Or a suitable height */
-    overflow-y: auto; /* Scroll if content overflows */
-    transition: max-height 0.3s ease-out; /* Smooth collapse/expand */
-}
-
-.all-dishes-group-list.hidden {
-    max-height: 0;
-    overflow: hidden;
-}
-
-/* Ensure existing list item styles are compatible */
-.all-dishes-group-list li {
-    display: flex; /* Use flexbox for alignment */
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
-    /* Add subtle glass effect to individual items for extra polish */
-    background: rgba(255, 255, 255, 0.05); /* Very slight transparency */
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.all-dishes-group-list li:hover {
-    background-color: rgba(255, 255, 255, 0.15); /* More visible on hover */
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-}
+/* Floating Action Button */
 #goToTop {
     background-color:#FF9800;
     color: black;

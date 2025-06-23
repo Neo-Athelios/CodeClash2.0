@@ -16,7 +16,6 @@
   const dishTypeFiltersContainer = document.getElementById('dish-type-filters');
   const activeFiltersSummary = document.getElementById('active-filters-summary');
   const paginationControls = document.getElementById('pagination-controls');
-  // Removed: const popularDishesGrid = document.getElementById('popular-dishes-grid');
   const allDishesList = document.getElementById('all-dishes-list'); // All dishes list element
 
 
